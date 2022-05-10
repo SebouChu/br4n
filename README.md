@@ -2,6 +2,8 @@
 
 Rails application using [H0dor](https://github.com/SebouChu/h0dor) as identity provider through OAuth2 and OpenID Connect
 
+![br4n](https://user-images.githubusercontent.com/7761386/167664288-8b97fdde-e3dc-426a-964a-da816a8255e1.jpeg)
+
 ## Setup
 
 You need a configured [H0dor](https://github.com/SebouChu/h0dor) instance in your work environment.
