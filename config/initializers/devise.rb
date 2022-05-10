@@ -272,21 +272,21 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   config.omniauth :doorkeeper,
-                  ENV['DOORKEEPER_APP_ID'],
-                  ENV['DOORKEEPER_APP_SECRET'],
+                  ENV['DOORKEEPER_OAUTH2_APP_ID'],
+                  ENV['DOORKEEPER_OAUTH2_APP_SECRET'],
                   scope: 'read',
                   strategy_class: OmniAuth::Strategies::Doorkeeper
 
   config.omniauth :openid_connect, {
-                  issuer: ENV['DOORKEEPER_APP_URL'],
+                  issuer: "https://#{ENV["DOORKEEPER_PROVIDER_HOST"]}",
                   scope: [:openid, :profile, :email],
                   client_options: {
                     port: 443,
                     scheme: "https",
-                    host: "h0dor.localhost",
-                    identifier: ENV['DOORKEEPER_OIDC_APP_ID'],
-                    secret: ENV['DOORKEEPER_OIDC_APP_SECRET'],
-                    redirect_uri: "https://br4n.localhost/users/auth/openid_connect/callback",
+                    host: ENV["DOORKEEPER_PROVIDER_HOST"],
+                    identifier: ENV['DOORKEEPER_OPENID_APP_ID'],
+                    secret: ENV['DOORKEEPER_OPENID_APP_SECRET'],
+                    redirect_uri: "#{ENV["APPLICATION_URL"]}/users/auth/openid_connect/callback",
                     authorization_endpoint: "/oauth/authorize",
                     token_endpoint: "/oauth/token",
                     userinfo_endpoint: "/oauth/userinfo",

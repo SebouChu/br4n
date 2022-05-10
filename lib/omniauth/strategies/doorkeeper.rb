@@ -4,7 +4,7 @@ module OmniAuth
       option :name, :doorkeeper
 
       option :client_options,
-             site: ENV['DOORKEEPER_APP_URL'],
+             site: "https://#{ENV['DOORKEEPER_PROVIDER_HOST']}",
              authorize_path: "/oauth/authorize"
 
       uid do
