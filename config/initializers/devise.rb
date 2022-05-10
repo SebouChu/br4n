@@ -277,6 +277,23 @@ Devise.setup do |config|
                   scope: 'read',
                   strategy_class: OmniAuth::Strategies::Doorkeeper
 
+  config.omniauth :openid_connect, {
+                  issuer: ENV['DOORKEEPER_APP_URL'],
+                  scope: [:openid, :profile, :email],
+                  client_options: {
+                    port: 443,
+                    scheme: "https",
+                    host: "h0dor.localhost",
+                    identifier: ENV['DOORKEEPER_OIDC_APP_ID'],
+                    secret: ENV['DOORKEEPER_OIDC_APP_SECRET'],
+                    redirect_uri: "https://br4n.localhost/users/auth/openid_connect/callback",
+                    authorization_endpoint: "/oauth/authorize",
+                    token_endpoint: "/oauth/token",
+                    userinfo_endpoint: "/oauth/userinfo",
+                    jwks_uri: "/oauth/discovery/keys"
+                  },
+                }
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

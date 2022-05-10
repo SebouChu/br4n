@@ -39,7 +39,8 @@
                     <li><hr class="dropdown-divider"></li>
                     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                   <% else %>
-                    <li><%= link_to "Sign in", user_doorkeeper_omniauth_authorize_path, method: :post, class: "dropdown-item" %></li>
+                    <li><%= link_to "Sign in with OAuth2", user_doorkeeper_omniauth_authorize_path, method: :post, class: "dropdown-item" %></li>
+                    <li><%= link_to "Sign in with OpenID", user_openid_connect_omniauth_authorize_path, method: :post, class: "dropdown-item" %></li>
                   <% end %>
                 </ul>
               </li>
